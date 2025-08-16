@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # PostgreSQL 資料庫服務
+  db:
+    image: postgres:15
+    container_name: quant_db
+    restart: always
+    environment:
+      - POSTGRES_USER=quantuser
+      - POSTGRES_PASSWORD=quantpassword
+      - POSTGRES_DB=quantdb
+    ports:
+      - "5432:5432" # 將本機的 5432 port 映射到容器的 5432 port
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  # Redis 服務 (用於 Celery 任務隊列)
+  redis:
+    image: redis:7
+    container_name: quant_redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata:
