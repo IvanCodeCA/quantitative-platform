@@ -1,4 +1,4 @@
-version: '3.8'
+
 
 services:
   # PostgreSQL 資料庫服務
@@ -11,7 +11,7 @@ services:
       - POSTGRES_PASSWORD=quantpassword
       - POSTGRES_DB=quantdb
     ports:
-      - "5432:5432" # 將本機的 5432 port 映射到容器的 5432 port
+      - "5434:5432" # # 將本機的 5434 port 映射到容器的 5432 port
     volumes:
       - pgdata:/var/lib/postgresql/data
 
